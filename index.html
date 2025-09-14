@@ -4,17 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DermaVision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
             colors: {
-              'brand-blue': '#3498db',
-              'brand-blue-dark': '#2980b9',
-              'brand-light': '#ecf0f1',
-              'brand-gray': '#bdc3c7',
-              'brand-dark': '#2c3e50',
+              'primary': '#14b8a6', // teal-500
+              'primary-dark': '#0d9488', // teal-600
+              'background': '#f8fafc', // slate-50
+              'surface': '#ffffff',
+              'text-primary': '#1e293b', // slate-800
+              'text-secondary': '#64748b', // slate-500
+              'border-color': '#e2e8f0', // slate-200
             }
           }
         }
@@ -31,7 +39,7 @@
 }
 </script>
 </head>
-  <body class="bg-brand-light">
+  <body class="bg-background font-sans">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

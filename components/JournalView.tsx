@@ -51,14 +51,14 @@ const JournalView: React.FC<JournalViewProps> = ({ isLoading, entries, onUpdateE
   const sortedEntries = [...entries].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="w-full h-full bg-white p-6 rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-6 border-b pb-4">
-        <h2 className="text-2xl font-bold text-brand-dark">My Skin Journal</h2>
+    <div className="w-full h-full bg-surface p-6 sm:p-8 rounded-2xl shadow-xl">
+      <div className="flex justify-between items-center mb-6 border-b border-border-color pb-4">
+        <h2 className="text-2xl font-bold text-text-primary">My Skin Journal</h2>
         {sortedEntries.length > 0 && (
           <div className="flex items-center space-x-4">
              <button
               onClick={handleExport}
-              className="text-brand-blue hover:text-brand-blue-dark font-semibold text-sm transition duration-300 flex items-center"
+              className="text-primary hover:text-primary-dark font-semibold text-sm transition duration-300 flex items-center"
               aria-label="Export all journal entries"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -84,16 +84,16 @@ const JournalView: React.FC<JournalViewProps> = ({ isLoading, entries, onUpdateE
         )}
       </div>
       {isLoading ? (
-        <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 py-16">
-          <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-brand-blue"></div>
-          <p className="mt-4 text-lg font-semibold text-brand-dark">Loading Journal...</p>
+        <div className="flex flex-col items-center justify-center h-full text-center text-text-secondary py-16">
+          <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+          <p className="mt-4 text-lg font-semibold text-text-primary">Loading Journal...</p>
         </div>
       ) : sortedEntries.length === 0 ? (
-        <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 py-16">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mb-4 text-brand-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+        <div className="flex flex-col items-center justify-center h-full text-center text-text-secondary py-16">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mb-4 text-border-color" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
             </svg>
-            <h3 className="text-xl font-semibold text-brand-dark">Your Journal is Empty</h3>
+            <h3 className="text-xl font-semibold text-text-primary">Your Journal is Empty</h3>
             <p className="mt-2 max-w-sm">Use the 'Analyzer' to check your skin and save the results to start tracking your progress.</p>
         </div>
       ) : (
@@ -108,7 +108,7 @@ const JournalView: React.FC<JournalViewProps> = ({ isLoading, entries, onUpdateE
             return (
               <div 
                   key={entry.id} 
-                  className="bg-slate-50 p-4 rounded-lg shadow-sm transition hover:shadow-md hover:bg-white cursor-pointer flex justify-between items-center"
+                  className="bg-background p-4 rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg hover:bg-primary/5 hover:scale-[1.02] cursor-pointer flex justify-between items-center"
                   onClick={() => setSelectedEntry(entry)}
                   role="button"
                   tabIndex={0}
@@ -116,14 +116,14 @@ const JournalView: React.FC<JournalViewProps> = ({ isLoading, entries, onUpdateE
                   aria-label={`View details for ${entry.title} from ${new Date(entry.date).toLocaleDateString()}`}
               >
                   <div className="flex-grow">
-                      <p className="font-bold text-brand-dark text-lg">{entry.title}</p>
-                      <p className="text-sm text-gray-600">
+                      <p className="font-bold text-text-primary text-lg">{entry.title}</p>
+                      <p className="text-sm text-text-secondary">
                         {new Date(entry.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                        <span className="text-gray-400 mx-2">·</span>
+                        <span className="text-slate-300 mx-2">·</span>
                         {summaryText}
                       </p>
                   </div>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-brand-gray flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
               </div>

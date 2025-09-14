@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { JournalEntry } from '../types';
 import AnalysisResult from './AnalysisResult';
@@ -30,10 +29,10 @@ const JournalDetail: React.FC<JournalDetailProps> = ({ entry, onUpdateEntry, onD
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md w-full">
+    <div className="bg-surface p-6 sm:p-8 rounded-2xl shadow-xl w-full">
       <button
         onClick={onBack}
-        className="mb-6 bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-300 transition duration-300 flex items-center"
+        className="mb-8 bg-slate-100 text-text-secondary font-bold py-2 px-4 rounded-lg hover:bg-slate-200 transition duration-300 flex items-center"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -44,43 +43,43 @@ const JournalDetail: React.FC<JournalDetailProps> = ({ entry, onUpdateEntry, onD
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div>
-            <img src={entry.imageDataUrl} alt="Skin analysis" className="w-full h-auto rounded-lg object-contain border border-brand-gray" />
-            <p className="text-center text-sm text-gray-500 mt-2">
+            <img src={entry.imageDataUrl} alt="Skin analysis" className="w-full h-auto rounded-xl object-contain border border-border-color" />
+            <p className="text-center text-sm text-text-secondary mt-2">
               Analysis from {new Date(entry.date).toLocaleString()}
             </p>
           </div>
           <div>
-            <label htmlFor="entry-title" className="text-lg font-semibold text-brand-dark mb-2 block">Title</label>
+            <label htmlFor="entry-title" className="text-lg font-semibold text-text-primary mb-2 block">Title</label>
             <input
                 id="entry-title"
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full p-2 border border-brand-gray rounded-md focus:ring-2 focus:ring-brand-blue focus:border-transparent transition"
+                className="w-full p-2 border border-border-color rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
                 aria-label="Journal entry title"
             />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-brand-dark mb-2">My Notes</h3>
+            <h3 className="text-lg font-semibold text-text-primary mb-2">My Notes</h3>
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Add notes about your skin, routine, or feelings..."
-              className="w-full h-32 p-2 border border-brand-gray rounded-md focus:ring-2 focus:ring-brand-blue focus:border-transparent transition"
+              className="w-full h-32 p-2 border border-border-color rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
               aria-label="Journal notes"
             />
             <div className="flex items-center mt-2">
                <button
                 onClick={handleSaveChanges}
-                className="bg-brand-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-brand-blue-dark transition duration-300 disabled:bg-brand-gray"
+                className="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300 disabled:bg-slate-300"
                 disabled={!hasChanges}
               >
                 Save Changes
               </button>
-               {isSaved && <span className="ml-4 text-green-600 font-semibold">Saved!</span>}
+               {isSaved && <span className="ml-4 text-emerald-600 font-semibold">Saved!</span>}
             </div>
           </div>
-           <div className="mt-6">
+           <div className="mt-6 border-t border-border-color pt-6">
                 <button
                     onClick={handleDelete}
                     className="text-red-600 hover:text-red-800 font-semibold transition duration-300 flex items-center"
@@ -93,7 +92,7 @@ const JournalDetail: React.FC<JournalDetailProps> = ({ entry, onUpdateEntry, onD
             </div>
         </div>
         <div className="max-h-[70vh] overflow-y-auto">
-          <h3 className="text-xl font-bold text-brand-dark mb-4">Detailed Analysis</h3>
+          <h3 className="text-xl font-bold text-text-primary mb-4">Detailed Analysis</h3>
           <AnalysisResult result={entry.analysis} />
         </div>
       </div>
