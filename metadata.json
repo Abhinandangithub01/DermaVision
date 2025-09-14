@@ -1,0 +1,5 @@
+{
+  "name": "DermaVision",
+  "description": "An AI-powered dermatology assistant that analyzes skin images to identify issues and recommend suitable food and medicine. This is not a substitute for professional medical advice.",
+  "requestFramePermissions": []
+}
